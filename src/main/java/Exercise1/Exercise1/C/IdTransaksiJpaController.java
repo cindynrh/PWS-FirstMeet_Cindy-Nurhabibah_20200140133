@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -28,11 +29,16 @@ public class IdTransaksiJpaController implements Serializable {
     public IdTransaksiJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Exercise1_Exercise1.C_jar_0.0.1-SNAPSHOTPU");
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
+    public IdTransaksiJpaController() {
+    }
+    
+    
 
     public void create(IdTransaksi idTransaksi) throws IllegalOrphanException, PreexistingEntityException, Exception {
         if (idTransaksi.getProdukCollection() == null) {
